@@ -29,6 +29,11 @@ sysinfo.txt
 .DS_Store
 
 ###
+# Visual Studio cache
+###
+.vs/
+
+###
 # OS generated
 ###
 .DS_Store
