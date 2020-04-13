@@ -6,6 +6,7 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] Transform characterTransform;
     [SerializeField] int movementRange;
+    [SerializeField] int attackRange;
 
     void Start()
     {
@@ -38,5 +39,10 @@ public class CharacterController : MonoBehaviour
     public bool IsTileAccessible(Vector3Int positionToMove)
     {
         return CalculateDistance(positionToMove) <= movementRange;
+    }
+
+    public bool IsTileAttackable(Vector3Int positionToAttack)
+    {
+        return CalculateDistance(positionToAttack) <= attackRange;
     }
 }
