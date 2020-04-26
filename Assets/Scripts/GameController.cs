@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,10 +19,10 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            Vector3Int mousePosition = PositionToVector3Int(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+            Vector3Int mousePosition = Utils.Vector3ToVector3Int(mainCamera.ScreenToWorldPoint(Input.mousePosition));
             var tileTypeToMoveTo = tilemapController.GetTile(mousePosition);
 
-            if (tileTypeToMoveTo != null)
+            if (tileTypeToMoveTo != null && !IsTileOccupied(mousePosition))
             {
                 characterControllers[characterIndex].Move(mousePosition);
                 characterIndex = characterIndex < characterControllers.Length - 1 ? characterIndex + 1 : 0;
@@ -29,8 +30,16 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private Vector3Int PositionToVector3Int(Vector3 position)
+    private bool IsTileOccupied(Vector3Int tilePosition)
     {
-        return new Vector3Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y), 0);
+        foreach (CharacterController character in characterControllers)
+        {
+            if (character.IsInTile(tilePosition))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }
