@@ -5,11 +5,11 @@ using UnityEngine.Tilemaps;
 
 public class TilemapController : MonoBehaviour
 {
-    [SerializeField] Tilemap tilemap;
+    [SerializeField] protected Tilemap tilemap;
 
     void Start()
     {
-
+        
     }
 
     void Update()
