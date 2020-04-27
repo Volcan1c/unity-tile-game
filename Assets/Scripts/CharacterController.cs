@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] Transform characterTransform;
+    [SerializeField] int movementRange = 1;
 
     void Start()
     {
@@ -27,5 +28,15 @@ public class CharacterController : MonoBehaviour
         Vector3Int characterPositionInt = Utils.Vector3ToVector3Int(characterTransform.position);
 
         return characterPositionInt.Equals(tilePosition);
+    }
+
+    public bool IsInMoveRange(Vector3Int position)
+    {
+        Vector3Int characterPositionInt = Utils.Vector3ToVector3Int(characterTransform.position);
+        int verticalDistance = Mathf.Abs(position.x - characterPositionInt.x);
+        int horizontalDistance = Mathf.Abs(position.y - characterPositionInt.y);
+        int distanceFromTile = verticalDistance + horizontalDistance;
+
+        return distanceFromTile <= movementRange;
     }
 }
