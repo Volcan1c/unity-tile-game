@@ -21,10 +21,15 @@ public class GameController : MonoBehaviour
         {
             Vector3Int mousePosition = Utils.Vector3ToVector3Int(mainCamera.ScreenToWorldPoint(Input.mousePosition));
             var tileTypeToMoveTo = tilemapController.GetTile(mousePosition);
+            var currentCharacter = characterControllers[characterIndex];
 
-            if (tileTypeToMoveTo != null && !IsTileOccupied(mousePosition))
+            if (
+                tileTypeToMoveTo != null &&
+                !IsTileOccupied(mousePosition) &&
+                currentCharacter.IsInMoveRange(mousePosition)
+               )
             {
-                characterControllers[characterIndex].Move(mousePosition);
+                currentCharacter.Move(mousePosition);
                 characterIndex = characterIndex < characterControllers.Length - 1 ? characterIndex + 1 : 0;
             }
         }
