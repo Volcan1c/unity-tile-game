@@ -8,16 +8,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField] Transform characterTransform;
     [SerializeField] int movementRange = 1;
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void Move(Vector3Int position)
     {
         characterTransform.position = new Vector3(position.x + 0.5f, position.y + 0.5f, characterTransform.position.z);
