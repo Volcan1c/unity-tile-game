@@ -2285,6 +2285,7 @@ MonoBehaviour:
   characterControllers:
   - {fileID: 945763610}
   - {fileID: 671318108}
+  highlightTilemapController: {fileID: 1007705877}
 --- !u!4 &1391588160
 Transform:
   m_ObjectHideFlags: 0
@@ -3445,7 +3446,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 945763610, guid: 87427f9bb6a6c45198486216f2fe9866, type: 3}
       propertyPath: movementRange
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 882090182189017873, guid: 87427f9bb6a6c45198486216f2fe9866,
         type: 3}
